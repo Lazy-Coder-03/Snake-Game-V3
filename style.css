@@ -1,0 +1,93 @@
+html, body {
+  margin: 10px;
+  padding: 0;
+  background-color: #8D62E9; 
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+canvas {
+  width: 90vw;
+  height: 90vw; 
+  border: 2px solid #000000; 
+}
+
+#score, #high-score {
+  font-size: 5vw; 
+  position: absolute;
+  right: 3vw;
+  top: 1vh;
+  margin: 1vh; 
+}
+
+#high-score {
+  top: 5vh; 
+}
+
+#controls {
+  display: flex;
+  position: absolute;
+  bottom: 5vh;
+  align-items: center;
+  justify-content: center;
+}
+
+#start {
+  position: absolute;
+  bottom: 18vh;
+}
+
+#controls button {
+  display: block;
+  margin: 1vw;
+  background-color: #fff;
+  border: 2px solid black;
+  color: #000;
+  cursor: pointer;
+  font-size: 2vw;
+  padding: 1vh; /*remove padding*/
+  height: 7vh;
+  width: 10vw;
+  border-radius: 0.5vw;
+  text-align: center; /*add text-align*/
+  line-height: 1vh; /*add line-height*/
+}
+
+#start button {
+  display: block;
+  height: 7vh;
+  width: 10vw;
+  font-size: 1.5vw;
+  padding: 1vh;
+  text-align: center; /*add text-align*/
+  line-height: 1vh;
+  border-radius: 0.5vw; /*add line-height*/
+}
+
+#controls button.toggle-on {
+  background-color: rgb(216,63,95);
+}
+
+#controls button:not(.toggle-on) {
+  background-color: rgb(71,251,31);
+}
+
+#start button.toggle-on {
+  background-color: rgb(216,63,95);
+}
+
+#start button:not(.toggle-on) {
+  background-color: rgb(71,251,31);
+}
+
+@media (min-width: 768px) {
+  #score, #high-score {
+    font-size: 1.5vw; 
+  }
+  
+  #controls button {
+    font-size: 1.5vw;
+    padding: 1vw 1.5vw;
+  }
+}
