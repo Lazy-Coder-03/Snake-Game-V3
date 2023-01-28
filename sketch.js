@@ -199,6 +199,8 @@ function draw() {
 }
 
 function startGame() {
+  scl=min(floor(windowHeight/windowScaleFac),floor(windowWidth/windowScaleFac));
+  createCanvas(scl * gridBlocks, scl * gridBlocks);
   snake = new Snake();
   food = new Food();
   bonusFood = null;
