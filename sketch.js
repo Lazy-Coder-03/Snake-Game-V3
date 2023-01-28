@@ -187,6 +187,8 @@ function draw() {
       }
       else {
         gameRunning = false;
+        score=0;
+        updateScore();
         document.getElementById("start-button").style.display = "block"
       }
     }
