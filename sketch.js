@@ -15,20 +15,22 @@ let playbgmusic = true;
 let playsound = true;
 let wall = true;
 let gameRunning = false;
-let windowScaleFac=30;//higher is smaller
+let gridBlocks=15;//no of sqaures in each row or col if this is lowered windowscalefac is increased
+let windowScaleFac=22;//higher is smaller
 function preload() {
   bgm = loadSound("soundsmp3/bgmusic.mp3");
   eatf = loadSound("soundsmp3/eat.mp3");
   eatbf = loadSound("soundsmp3/bonuseat.mp3");
   for (let i = 97; i <= 110; i++) {
-    let soundFile = "soundsmp3/" + String.fromCharCode(i) + ".mp3";
-    sounds.push(loadSound(soundFile))
+    sounds.push(loadSound("soundsmp3/" + String.fromCharCode(i) + ".mp3"))
   }
 }
 
+
+
 function setup() {
   scl=min(floor(windowHeight/windowScaleFac),floor(windowWidth/windowScaleFac));
-  createCanvas(scl * 20, scl * 20);
+  createCanvas(scl * gridBlocks, scl * gridBlocks);
   frameRate(10);
   if (playbgmusic) {
     bgmPlay();
@@ -37,6 +39,7 @@ function setup() {
   }
 }
 
+
 function eatfsound() {
   let ind = foodCount % sounds.length;
   sounds[ind].setVolume(0.3);
@@ -44,12 +47,11 @@ function eatfsound() {
 }
 
 function bgmPlay() {
-  bgm.setVolume(0.1)
+  bgm.setVolume(0.1);
   bgm.play();
   bgm.loop();
 
 }
-
 function updateHighScore() {
   if (score > highScore) {
     highScore = score;
@@ -160,6 +162,7 @@ function draw() {
       line(width,0,width,height)
       pop()
     }
+
 
     snake.update();
     snake.show();
