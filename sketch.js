@@ -26,10 +26,10 @@ function preload() {
   }
 }
 
-function windowResized() {
-  scl=floor(windowHeight/windowScaleFac);
-  createCanvas(scl * 20, scl * 20);
-}
+// function windowResized() {
+//   scl=floor(windowHeight/windowScaleFac);
+//   createCanvas(scl * 20, scl * 20);
+// }
 
 function setup() {
   scl=floor(windowHeight/windowScaleFac);
