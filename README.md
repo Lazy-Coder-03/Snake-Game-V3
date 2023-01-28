@@ -1,4 +1,4 @@
-# **Snake Game**
+# **Snake Game v3.0**
 
 This is a simple snake game implemented in JavaScript using the p5.js library. The game consists of a snake that moves around the screen, consuming food to grow in size. The goal is to make the snake as large as possible without colliding with its own body. In the latest version, you can toggle the wall option for added challenge
 
