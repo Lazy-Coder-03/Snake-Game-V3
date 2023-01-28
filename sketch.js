@@ -182,6 +182,7 @@ function draw() {
       }
       else {
         gameRunning = false;
+        score=0;
         document.getElementById("start-button").style.display = "block"
       }
     }
