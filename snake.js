@@ -95,7 +95,7 @@ class Snake {
       fill(255);
       stroke(0)
       for (let i = 0; i < this.tail.length; i++) {
-        rect(this.tail[i].x, this.tail[i].y, scl, scl,8);
+        rect(this.tail[i].x, this.tail[i].y, scl, scl,(1/5)*scl);
       }
       rect(this.x, this.y, scl, scl,(1/8)*scl);
     }
