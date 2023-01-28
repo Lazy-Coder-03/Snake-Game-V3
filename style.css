@@ -10,19 +10,19 @@ html, body {
 canvas {
   width: 90vw;
   height: 90vw; 
-  border: 2px solid #000000; 
+  border: 3px solid #000000; 
 }
 
 #score, #high-score {
-  font-size: 5vw; 
+  font-size: 2.5vw; 
   position: absolute;
-  right: 3vw;
+  right: 1vw;
   top: 1vh;
   margin: 1vh; 
 }
 
 #high-score {
-  top: 5vh; 
+  top: 7vh; 
 }
 
 #controls {
@@ -45,7 +45,7 @@ canvas {
   border: 2px solid black;
   color: #000;
   cursor: pointer;
-  font-size: 2vw;
+  font-size: 1.5vw;
   padding: 1vh; /*remove padding*/
   height: 7vh;
   width: 10vw;
@@ -81,13 +81,4 @@ canvas {
   background-color: rgb(71,251,31);
 }
 
-@media (min-width: 768px) {
-  #score, #high-score {
-    font-size: 1.5vw; 
-  }
-  
-  #controls button {
-    font-size: 1.5vw;
-    padding: 1vw 1.5vw;
-  }
-}
+
