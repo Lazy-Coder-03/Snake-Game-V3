@@ -26,13 +26,8 @@ function preload() {
   }
 }
 
-// function windowResized() {
-//   scl=floor(windowHeight/windowScaleFac);
-//   createCanvas(scl * 20, scl * 20);
-// }
-
 function setup() {
-  scl=floor(windowHeight/windowScaleFac);
+  scl=min(floor(windowHeight/windowScaleFac),floor(windowWidth/windowScaleFac));
   createCanvas(scl * 20, scl * 20);
   frameRate(10);
   if (playbgmusic) {
@@ -41,7 +36,6 @@ function setup() {
     bgm.stop();
   }
 }
-
 
 function eatfsound() {
   let ind = foodCount % sounds.length;
@@ -55,6 +49,7 @@ function bgmPlay() {
   bgm.loop();
 
 }
+
 function updateHighScore() {
   if (score > highScore) {
     highScore = score;
@@ -154,7 +149,17 @@ function draw() {
         line(0, i * scl, width, i * scl)
       }
     }
-
+    //wall
+    if (wall){
+      push()
+      stroke(255, 76, 90)
+      strokeWeight(5)
+      line(0,0,width,0)
+      line(0,0,0,height)
+      line(0,height,width,height)
+      line(width,0,width,height)
+      pop()
+    }
 
     snake.update();
     snake.show();
@@ -182,7 +187,6 @@ function draw() {
       }
       else {
         gameRunning = false;
-        score=0;
         document.getElementById("start-button").style.display = "block"
       }
     }
@@ -211,9 +215,3 @@ function keyPressed() {
     snake.dir(1, 0);
   }
 }
-
-
-
-
-
-
