@@ -24,7 +24,7 @@ class Food {
     show() {
       stroke(0)
       fill("orange");
-      rect(this.x, this.y, scl, scl,8);
+      rect(this.x, this.y, scl, scl,(1/5)*scl);
     }
   }
 
@@ -51,7 +51,7 @@ class Food {
     show() {
       stroke(0)
       fill("rgb(58,206,58)");
-      rect(this.x, this.y, scl, scl,8);
+      rect(this.x, this.y, scl, scl,(1/5)*scl);
       let x = constrain(this.expirationTime-millis(),0,this.expirationTime)/1000;
       fill("red");
       textSize(12);
