@@ -185,7 +185,7 @@ function draw() {
     updateScore();
     if (gameOver) {
 
-      if (confirm("Game over. Do you want to restart?")) {
+      if (confirm("Game over. Do you want to Continue Playing with the current settings? If you want to change any Settings Before playing click cancel :) ")) {
         startGame()
       }
       else {
