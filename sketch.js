@@ -15,8 +15,16 @@ let playbgmusic = true;
 let playsound = true;
 let wall = true;
 let gameRunning = false;
-let gridBlocks=15;//no of sqaures in each row or col if this is lowered windowscalefac is increased
-let windowScaleFac=22;//higher is smaller
+let gridBlocks = 15;//no of sqaures in each row or col if this is lowered windowscalefac is increased
+let windowScaleFac = 22;//higher is smaller
+let gamespeed = 10;
+//ALL HTML ELEMENTS
+const toggleGridButton = document.getElementById("toggle-grid-button");
+const toggleMusicButton = document.getElementById("music-toggle-button");
+const toggleSoundButton = document.getElementById("sound-toggle-button");
+const toggleWallButton = document.getElementById("toggle-wall-button");
+const startButton = document.getElementById("start-button");
+
 function preload() {
   bgm = loadSound("soundsmp3/bgmusic.mp3");
   eatf = loadSound("soundsmp3/eat.mp3");
@@ -29,9 +37,9 @@ function preload() {
 
 
 function setup() {
-  scl=min(floor(windowHeight/windowScaleFac),floor(windowWidth/windowScaleFac));
+  scl = min(floor(windowHeight / windowScaleFac), floor(windowWidth / windowScaleFac));
   createCanvas(scl * gridBlocks, scl * gridBlocks);
-  frameRate(10);
+  frameRate(gamespeed);
   if (playbgmusic) {
     bgmPlay();
   } else {
@@ -71,13 +79,6 @@ function updateScore() {
   scoreElement.innerHTML = `Score: ${score}`;
 }
 
-const toggleGridButton = document.getElementById("toggle-grid-button");
-const toggleMusicButton = document.getElementById("music-toggle-button");
-const toggleSoundButton = document.getElementById("sound-toggle-button");
-const toggleWallButton = document.getElementById("toggle-wall-button");
-const startButton = document.getElementById("start-button");
-
-
 toggleGridButton.addEventListener("click", () => {
   if (!gameRunning) {
     showGrid = !showGrid;
@@ -108,8 +109,6 @@ toggleWallButton.addEventListener("click", () => {
   }
 });
 
-
-
 startButton.addEventListener("click", () => {
   startButton.style.display = "none";
   startGame();
@@ -117,28 +116,29 @@ startButton.addEventListener("click", () => {
 
 function draw() {
   background(51);
-
   if (!gameRunning) {
+    strokeWeight(3);
     fill(255);
-    textSize(width*1/20);
+    textSize(width * 1 / 20);
     textAlign(LEFT)
     textStyle(BOLD);
-    text("Rules :", width/30, height/10)
-    textSize(width*1/27);
+    text("Rules :", width / 30, height / 10)
+    textSize(width * 1 / 27);
     textStyle(NORMAL);
-    text("1) This is a Classic game of Snake Where your goal is to score the HIGHEST !!!", width/30, height/15,width-25,height/4)
-    text("2) You will lose the game if you run into yourself or run into the wall when Wall option is toggled", width/30, height/6,width-25,height/4)
-    text("3) You can only toggle the grid and wall option when the game is not running, the music and sounds can be toggled any time", width/30, height/3.5,width-25,height/4)
-    textSize(width*1/10);
+    text("1) This is a Classic game of Snake Where your goal is to score the HIGHEST !!!", width / 30, height / 15, width - 25, height / 4)
+    text("2) You will lose the game if you run into yourself or run into the wall when Wall option is toggled", width / 30, height / 6, width - 25, height / 4)
+    text("3) You can only toggle the grid and wall option when the game is not running, the music and sounds can be toggled any time", width / 30, height / 3.5, width - 25, height / 4)
+    textSize(width * 1 / 10);
     fill("gold")
+    stroke(0)
+    strokeWeight(5);
     textAlign(CENTER, CENTER);
-    text("HAVE FUN!!!", width / 2, height*(2/3))
+    text("HAVE FUN!!!", width / 2, height * (2 / 3))
     //noLoop();
     return;
   }
   else {
     //grid
-
     if (showGrid) {
       for (let i = 1; i < width; i += 1) {
         strokeWeight(0.5)
@@ -152,17 +152,16 @@ function draw() {
       }
     }
     //wall
-    if (wall){
+    if (wall) {
       push()
       stroke(255, 76, 90)
       strokeWeight(5)
-      line(0,0,width,0)
-      line(0,0,0,height)
-      line(0,height,width,height)
-      line(width,0,width,height)
+      line(0, 0, width, 0)
+      line(0, 0, 0, height)
+      line(0, height, width, height)
+      line(width, 0, width, height)
       pop()
     }
-
 
     snake.update();
     snake.show();
@@ -185,12 +184,12 @@ function draw() {
     updateScore();
     if (gameOver) {
 
-      if (confirm("Game over. Do you want to restart?")) {
+      if (confirm("Game over. Do you want to Continue Playing with the current settings? If you want to change any Settings Before playing click cancel :) ")) {
         startGame()
       }
       else {
         gameRunning = false;
-        score=0;
+        score = 0;
         updateScore();
         document.getElementById("start-button").style.display = "block"
       }
@@ -199,7 +198,7 @@ function draw() {
 }
 
 function startGame() {
-  scl=min(floor(windowHeight/windowScaleFac),floor(windowWidth/windowScaleFac));
+  scl = min(floor(windowHeight / windowScaleFac), floor(windowWidth / windowScaleFac));
   createCanvas(scl * gridBlocks, scl * gridBlocks);
   snake = new Snake();
   food = new Food();
